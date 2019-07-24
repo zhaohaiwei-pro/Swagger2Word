@@ -1,0 +1,41 @@
+server:
+  port: 8080
+  tomcat:
+    max-threads: 800
+    uri-encoding: UTF-8
+
+spring:
+  application:
+    name: swagger2word
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+    servlet:
+      content-type: text/html
+    enabled: true
+    encoding: UTF-8
+    mode: HTML5
+
+
+# Swagger json url address
+# etc. http://192.168.6.58:8080/corexapi/v2/api-docs?group=default
+swagger:
+  root:
+    title: Corex API接口文档
+  modules: HIS,Platform
+  base:
+    project:
+      host: http://localhost:9090
+      path: /corexapi
+    json:
+      url: /v2/api-docs?group=
+  response:
+    code: 0,1
+    desc: 成功,失败
+
+
+
+
+
+

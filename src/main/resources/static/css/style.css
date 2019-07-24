@@ -1,0 +1,44 @@
+#exportBtn {
+  float: right;
+}
+
+h2, h3, h4 {
+  cursor: pointer;
+}
+
+.bg {
+  background-color: rgb(173, 216, 230);
+}
+
+tr {
+  height: 30px;
+  font-size: 14px;
+}
+
+td {
+  padding-left: 0.5em;
+}
+
+.resp td {
+  width: 50%;
+}
+
+.api td {
+  width: 25%;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 26px;
+  line-height: 1px;
+  text-align: center;
+  background: #eee;
+}
+
+.footer p {
+  color: #666;
+  font-size: 14px;
+}

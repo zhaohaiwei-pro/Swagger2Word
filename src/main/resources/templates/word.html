@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta content="application/msword" http-equiv="Content-Type"/>
+  <link rel="icon" th:href="@{/image/favicon.ico}"/>
+  <title th:text="${apiRoot.title}"></title>
+  <link rel="stylesheet" th:href="@{/css/style.css}"/>
+  <script th:src="@{/js/jquery-3.4.1.min.js}" type="text/javascript"></script>
+  <script th:src="@{/js/FileSaver.js}" type="text/javascript"></script>
+  <script th:src="@{/js/jquery.wordexport.js}" type="text/javascript"></script>
+  <script language="javascript">
+    $(function () {
+      $("#exportBtn").click(function () {
+        $("#export_word").wordExport($("title").eq(0).text());
+      })
+    })
+  </script>
+</head>
+
+<body>
+<a href="javascript:void(0)" id="exportBtn">导出Word</a>
+<div id="export_word" style="width:800px; margin: 0 auto">
+  <h1 style="text-align: center" th:text="${apiRoot.title}"></h1>
+  <div th:if="${#lists.size(apiRoot.responseCodeList)} gt 0">
+    <table border="1" cellpadding="0" cellspacing="0" class="resp" width="100%">
+      <tr class="bg">
+        <td align="center">状态码</td>
+        <td align="center">说明</td>
+      </tr>
+      <tr th:each="respCode:${apiRoot.responseCodeList}">
+        <td align="center" th:text="${respCode.code}"></td>
+        <td align="center" th:text="${respCode.description}"></td>
+      </tr>
+    </table>
+  </div>
+  <div th:each="module,moduleStat:${apiRoot.moduleList}">
+    <!--模块名称-->
+    <h2 th:text="${moduleStat.index+1+'、'+module.title}"></h2>
+    <div th:each="api,apiStat:${module.apiList}">
+      <h3 style="text-indent: 2em" th:text="${apiStat.index+1+'、'+api.name}"></h3>
+      <div th:each="interface,interfaceStat:${api.interfaceList}">
+        <h4 style="text-indent: 4em" th:text="${interfaceStat.index+1+'、'+interface.summary}"></h4>
+        <table border="1" cellpadding="0" cellspacing="0" class="api" style="margin-left: 4em" width="100%">
+          <tr>
+            <td align="center" class="bg">接口名称</td>
+            <td class="bg" colspan="3" th:text="${interface.summary}"></td>
+          </tr>
+          <tr>
+            <td align="center">接口描述</td>
+            <td colspan="3" th:utext="${interface.description}"></td>
+          </tr>
+          <tr>
+            <td align="center">接口地址</td>
+            <td colspan="3" style="color: blue" th:text="${interface.url}"></td>
+          </tr>
+          <tr>
+            <td align="center">请求方式</td>
+            <td colspan="3" th:text="${interface.requestType}"></td>
+          </tr>
+          <tr>
+            <td align="center">请求类型</td>
+            <td colspan="3" th:text="${interface.requestForm}"></td>
+          </tr>
+          <tr>
+            <td align="center">返回类型</td>
+            <td colspan="3" th:text="${interface.responseForm}"></td>
+          </tr>
+
+          <tr align="center" class="bg">
+            <td>参数名</td>
+            <td>参数类型</td>
+            <td>是否必填</td>
+            <td>说明</td>
+          </tr>
+
+          <tr align="center" th:each="request:${interface.requestList}">
+            <td th:text="${request.name}"></td>
+            <td th:text="${request.paramType}"></td>
+            <td th:if="${request.require}" th:text="Y"></td>
+            <td th:if="${!request.require}" th:text="N"></td>
+            <td th:text="${request.remark}"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br><br>
+<div class="footer">
+  <p>Copyright &copy; 2017-2019 mozihealthcareCo.,Ltd. VersionV1.0</p>
+</div>
+</body>
+</html>
+
