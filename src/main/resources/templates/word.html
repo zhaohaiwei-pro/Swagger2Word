@@ -13,8 +13,11 @@
       $("#exportBtn").click(function () {
         $("#export_word").wordExport($("title").eq(0).text());
       })
+      $("ul li a").click(function () {
+        $(this).next().slideToggle();
+      })
       $("h2,h3,h4").click(function () {
-        $(this).next().slideToggle(); //有个上下滑动动画的展开收起效果  推荐
+        $(this).next().slideToggle();
       })
     })
   </script>
