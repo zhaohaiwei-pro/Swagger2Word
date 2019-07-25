@@ -1,5 +1,42 @@
+body {
+  width: 100%;
+}
+
 #exportBtn {
   float: right;
+  margin-right: 5%;
+}
+
+#menu {
+  float: left;
+  width: 25%;
+  height: 800px;
+  margin: 0 auto;
+  position: fixed;
+  top: 5%;
+  overflow: auto;
+}
+
+#menu ul {
+  list-style: none;
+}
+
+#menu ul li a {
+  color: black;
+  text-decoration-line: none;
+}
+
+#menu ul li a:hover {
+  cursor: pointer;
+  color: blue;
+}
+
+#export_word {
+  float: left;
+  width: 40%;
+  margin: 0 auto;
+  position: relative;
+  left: 30%;
 }
 
 h2, h3, h4 {
