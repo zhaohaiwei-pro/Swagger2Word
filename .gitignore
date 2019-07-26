@@ -77,3 +77,6 @@ target/classes/templates/word.html
 .idea/libraries/Maven__org_yaml_snakeyaml_1_23.xml
 .idea/modules.xml
 Swagger2Word.iml
+.idea/codeStyles/codeStyleConfig.xml
+.idea/codeStyles/Project.xml
+src/main/resources/application.yml
