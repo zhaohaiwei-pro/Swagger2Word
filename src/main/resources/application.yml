@@ -23,7 +23,7 @@ spring:
 swagger:
   root:
     title: Corex API接口文档
-  modules: HIS,Platform
+  modules: Mobile
   base:
     project:
       host: http://localhost:9090
