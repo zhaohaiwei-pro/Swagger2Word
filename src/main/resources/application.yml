@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8082
   tomcat:
     max-threads: 800
     uri-encoding: UTF-8
@@ -15,7 +15,14 @@ spring:
       content-type: text/html
     enabled: true
     encoding: UTF-8
-    mode: HTML5
+    mode: HTML
+  datasource:
+    #oracle
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@192.168.6.15:1521:PHXORCL
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: hisopt
+    password: hisopt
 
 
 # Swagger json url address
@@ -23,16 +30,16 @@ spring:
 swagger:
   root:
     title: Corex API接口文档
-  modules: Mobile
+  modules: Mobile,HIS,EMR,Platform
   base:
     project:
-      host: http://localhost:9090
-      path: /corexapi
+      host: http://192.168.6.13:8081
+      path:
     json:
       url: /v2/api-docs?group=
   response:
-    code: 0,1
-    desc: 成功,失败
+    code: 0,-1,40001,40002,40003
+    desc: 成功,系统错误,参数错误,数据格式错误,业务逻辑错误
 
 
 
